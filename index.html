@@ -5,10 +5,10 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Bootstrap 3, from LayoutIt!</title>
+	<title>EZ Railway</title>
 
-	<meta name="description" content="Source code generated using layoutit.com">
-	<meta name="author" content="LayoutIt!">
+	<meta name="description" content="a simple tool for Taiwan Railway ticket booking system">
+	<meta name="author" content="addison822">
 
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
@@ -25,10 +25,10 @@
 				<div class="tabbable" id="tabs-947886">
 					<ul class="nav nav-tabs">
 						<li>
-							<a href="#panel_1" data-toggle="tab">Section 1</a>
+							<a href="#panel_1" data-toggle="tab">去回票</a>
 						</li>
 						<li class="active">
-							<a href="#panel_2" data-toggle="tab">Section 2</a>
+							<a href="#panel_2" data-toggle="tab">單程票</a>
 						</li>
 					</ul>
 					<div class="tab-content">
@@ -37,33 +37,45 @@
 							</div>
 							<form role="form" >
 								<div class="radio">
-									<label><input type="radio" name="optradio">選項 1</label>
+									<label>
+										<input type="radio" name="optradio">
+										臺北-彰化
+									</label>
 								</div>
 								<div class="radio">
-									<label><input type="radio" name="optradio">選項 2</label>
+									<label><input type="radio" name="optradio" checked="checked">
+										彰化-臺北
+									</label>
 								</div>
 								<div class="form-group">
 
-									<label for="exampleInputEmail1">
-										Email address
+									<label for="person_id">
+										身分證字號
 									</label>
-									<input type="email" class="form-control" id="exampleInputEmail1">
+									<input type="text" class="form-control" id="person_id">
 								</div>
 								<div class="form-group">
 
-									<label for="exampleInputPassword1">
-										Password
+									<label for="train_no">
+										車次代碼(去程)
 									</label>
-									<input type="password" class="form-control" id="exampleInputPassword1">
+									<input type="text" class="form-control" id="train_no">
+								</div>
+								<div class="form-group">
+
+									<label for="train_no2">
+										車次代碼(回程) 
+									</label>
+									<input type="text" class="form-control" id="train_no2">
 								</div>
 								<div class="checkbox">
 
 									<label>
-										<input type="checkbox" id="check"> Check me out
+										<input type="checkbox" id="check"> 自動送出
 									</label>
 								</div> 
 								<button type="button" class="btn btn-primary btn-lg" id="myBtn">
-									Open Modal
+									產生 Bookmarklet
 								</button>
 							</form>
 
@@ -75,59 +87,181 @@
 									<div class="modal-content">
 										<div class="modal-header">
 											<button type="button" class="close" data-dismiss="modal">&times;</button>
-											<h4 class="modal-title">Modal Header</h4>
+											<h4 class="modal-title">Bookmarklet 產生成功！</h4>
 										</div>
-										<div class="modal-body">									<a id="myText" >My Link</a>
-										</div>
-										<div class="modal-footer">
-											<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-										</div>
+										<div class="modal-body">									<p>
+											請將下方連結拖至書籤列
+										</p>
+										<a id="myText" >My Link</a>
 									</div>
-
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									</div>
 								</div>
+
 							</div>
 						</div>
-						<div class="tab-pane active" id="panel_2">
-							<p>
-								Howdy, I'm in Section 2.
-							</p>
+					</div>
+					<div class="tab-pane active" id="panel_2">
+						<div style="padding-top:30px;">
+						</div>
+						<form role="form" >
+							<div class="radio">
+								<label>
+									<input type="radio" name="oneway_optradio">
+									臺北-彰化
+								</label>
+							</div>
+							<div class="radio">
+								<label><input type="radio" name="oneway_optradio" checked="checked">
+									彰化-臺北
+								</label>
+							</div>
+							<div class="form-group">
+
+								<label for="oneway_person_id">
+									身分證字號
+								</label>
+								<input type="text" class="form-control" id="oneway_person_id">
+							</div>
+							<div class="form-group">
+
+								<label for="oneway_train_no">
+									車次代碼
+								</label>
+								<input type="text" class="form-control" id="oneway_train_no">
+							</div>
+							<div class="checkbox">
+
+								<label>
+									<input type="checkbox" id="oneway_check"> 自動送出
+								</label>
+							</div> 
+							<button type="button" class="btn btn-primary btn-lg" id="oneway_btn">
+								產生 Bookmarklet
+							</button>
+						</form>
+
+						<!-- Modal -->
+						<div id="oneway_modal" class="modal fade" role="dialog">
+							<div class="modal-dialog">
+
+								<!-- Modal content-->
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+										<h4 class="modal-title">Bookmarklet 產生成功！</h4>
+									</div>
+									<div class="modal-body">									<p>
+										請將下方連結拖至書籤列
+									</p>
+									<a id="oneway_link" >My Link</a>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								</div>
+							</div>
+
 						</div>
 					</div>
 				</div>
-
-			</div>
-			<div class="col-md-4">
 			</div>
 		</div>
+
 	</div>
+	<div class="col-md-4">
+	</div>
+</div>
+</div>
 
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/scripts.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/scripts.js"></script>
 
-	<script>
-	$(document).ready(function(){
-		$("#myBtn").click(function(){
-			var radioIndex = $(":radio[name='optradio']").index($(":radio[name='optradio']:checked"));
+<script>
+$(document).ready(function(){
+	$("#myBtn").click(function(){
+		var javascriptContent = "javascript:(function(){"
+			+"frame=parent.document.getElementsByTagName('frame')[2];"
+			+"frame.contentWindow.document.getElementById('getin_date').selectedIndex=14;"
+			+"frame.contentWindow.document.getElementById('getin_date2').selectedIndex=14;";
+
+			javascriptContent+=
+			"frame.contentWindow.document.getElementById('person_id').value='"
+			+$("#person_id").val()
+			+"';";
+			javascriptContent+=
+			"frame.contentWindow.document.getElementById('train_no').value='"
+			+$("#train_no").val()
+			+"';";
+			javascriptContent+=
+			"frame.contentWindow.document.getElementById('train_no2').value='"
+			+$("#train_no2").val()
+			+"';";
+
+			var radioIndex=$(":radio[name='optradio']").index($(":radio[name='optradio']:checked"));
 			radioIndex = parseInt(radioIndex);
-			if(!$("#check").prop("checked")){
-				
-				if(radioIndex == 0){
-					$("#myText").text("Option 1");
-					$("#myText").attr("href", "javascript:" + $("#exampleInputEmail1").val());
-					$("#myModal").modal();
-				}else if(radioIndex == 1){
-					$("#myText").text("Option 2");
-					$("#myModal").modal();
-				}
-				
-			}else{
-				$("#myText").attr("href", "javascript:" + $("#exampleInputPassword1").val());
-				$("#myModal").modal();
+			if(radioIndex == 0){
+				javascriptContent+=
+				"frame.contentWindow.document.getElementById('from_station').selectedIndex=53;"
+				+"frame.contentWindow.document.getElementById('to_station').selectedIndex=96;";
+			}else if(radioIndex == 1){
+				javascriptContent+=
+				"frame.contentWindow.document.getElementById('from_station').selectedIndex=96;"
+				+"frame.contentWindow.document.getElementById('to_station').selectedIndex=53;";	
 			}
 
-		});
+			if($("#check").prop("checked")){
+				javascriptContent+=
+				"frame.contentWindow.document.getElementsByName('ctno2')[0].submit();";
+			}
+
+			javascriptContent+="})()";
+
+		$("#myText").text("台鐵訂票小工具");
+		$("#myText").attr("href", javascriptContent);
+		$("#myModal").modal();
 	});
-	</script>
+
+	$("#oneway_btn").click(function(){
+		var javascriptContent = "javascript:(function(){"
+			+"frame=parent.document.getElementsByTagName('frame')[2];"
+			+"frame.contentWindow.document.getElementById('getin_date').selectedIndex=14;";
+
+		javascriptContent+=
+			"frame.contentWindow.document.getElementById('person_id').value='"
+			+$("#oneway_person_id").val()
+			+"';";
+		javascriptContent+=
+			"frame.contentWindow.document.getElementById('train_no').value='"
+			+$("#oneway_train_no").val()
+			+"';";
+
+		var radioIndex=$(":radio[name='oneway_optradio']").index($(":radio[name='oneway_optradio']:checked"));
+		radioIndex = parseInt(radioIndex);
+		if(radioIndex == 0){
+			javascriptContent+=
+				"frame.contentWindow.document.getElementById('from_station').selectedIndex=53;"
+				+"frame.contentWindow.document.getElementById('to_station').selectedIndex=96;";
+		}else if(radioIndex == 1){
+			javascriptContent+=
+				"frame.contentWindow.document.getElementById('from_station').selectedIndex=96;"
+				+"frame.contentWindow.document.getElementById('to_station').selectedIndex=53;";	
+		}
+
+		if($("#oneway_check").prop("checked")){
+			javascriptContent+=
+				"frame.contentWindow.document.getElementsByName('ctno1')[0].submit();";
+		}
+
+		javascriptContent+="})()";
+
+		$("#oneway_link").text("台鐵訂票小工具");
+		$("#oneway_link").attr("href", javascriptContent);
+		$("#oneway_modal").modal();
+
+	});
+});
+</script>
 </body>
 </html>
