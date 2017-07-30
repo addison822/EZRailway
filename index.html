@@ -36,16 +36,19 @@
 							<div style="padding-top:30px;">
 							</div>
 							<form role="form" >
-								<div class="radio">
-									<label>
-										<input type="radio" name="optradio">
-										臺北-彰化
+								<div class="form-group">
+
+									<label for="from_station">
+										起站代碼
 									</label>
+									<input type="text" class="form-control" id="from_station">
 								</div>
-								<div class="radio">
-									<label><input type="radio" name="optradio" checked="checked">
-										彰化-臺北
+								<div class="form-group">
+
+									<label for="to_station">
+										到站代碼
 									</label>
+									<input type="text" class="form-control" id="to_station">
 								</div>
 								<div class="form-group">
 
@@ -106,17 +109,20 @@
 						<div style="padding-top:30px;">
 						</div>
 						<form role="form" >
-							<div class="radio">
-								<label>
-									<input type="radio" name="oneway_optradio">
-									臺北-彰化
-								</label>
-							</div>
-							<div class="radio">
-								<label><input type="radio" name="oneway_optradio" checked="checked">
-									彰化-臺北
-								</label>
-							</div>
+							<div class="form-group">
+
+									<label for="oneway_from_station">
+										起站代碼
+									</label>
+									<input type="text" class="form-control" id="oneway_from_station">
+								</div>
+								<div class="form-group">
+
+									<label for="oneway_to_station">
+										到站代碼
+									</label>
+									<input type="text" class="form-control" id="oneway_to_station">
+								</div>
 							<div class="form-group">
 
 								<label for="oneway_person_id">
@@ -186,37 +192,33 @@ $(document).ready(function(){
 			+"frame.contentWindow.document.getElementById('getin_date').selectedIndex=14;"
 			+"frame.contentWindow.document.getElementById('getin_date2').selectedIndex=14;";
 
-			javascriptContent+=
+		javascriptContent+=
+			"frame.contentWindow.document.getElementById('from_station').value='"
+			+$("#from_station").val()
+			+"';";
+		javascriptContent+=
+			"frame.contentWindow.document.getElementById('to_station').value='"
+			+$("#to_station").val()
+			+"';";
+		javascriptContent+=
 			"frame.contentWindow.document.getElementById('person_id').value='"
 			+$("#person_id").val()
 			+"';";
-			javascriptContent+=
+		javascriptContent+=
 			"frame.contentWindow.document.getElementById('train_no').value='"
 			+$("#train_no").val()
 			+"';";
-			javascriptContent+=
+		javascriptContent+=
 			"frame.contentWindow.document.getElementById('train_no2').value='"
 			+$("#train_no2").val()
 			+"';";
 
-			var radioIndex=$(":radio[name='optradio']").index($(":radio[name='optradio']:checked"));
-			radioIndex = parseInt(radioIndex);
-			if(radioIndex == 0){
-				javascriptContent+=
-				"frame.contentWindow.document.getElementById('from_station').selectedIndex=53;"
-				+"frame.contentWindow.document.getElementById('to_station').selectedIndex=96;";
-			}else if(radioIndex == 1){
-				javascriptContent+=
-				"frame.contentWindow.document.getElementById('from_station').selectedIndex=96;"
-				+"frame.contentWindow.document.getElementById('to_station').selectedIndex=53;";	
-			}
-
-			if($("#check").prop("checked")){
-				javascriptContent+=
+		if($("#check").prop("checked")){
+			javascriptContent+=
 				"frame.contentWindow.document.getElementsByName('ctno2')[0].submit();";
-			}
+		}
 
-			javascriptContent+="})()";
+		javascriptContent+="})()";
 
 		$("#myText").text("台鐵訂票小工具");
 		$("#myText").attr("href", javascriptContent);
@@ -229,6 +231,14 @@ $(document).ready(function(){
 			+"frame.contentWindow.document.getElementById('getin_date').selectedIndex=14;";
 
 		javascriptContent+=
+			"frame.contentWindow.document.getElementById('from_station').value='"
+			+$("#oneway_from_station").val()
+			+"';";
+		javascriptContent+=
+			"frame.contentWindow.document.getElementById('to_station').value='"
+			+$("#oneway_to_station").val()
+			+"';";
+		javascriptContent+=
 			"frame.contentWindow.document.getElementById('person_id').value='"
 			+$("#oneway_person_id").val()
 			+"';";
@@ -236,18 +246,6 @@ $(document).ready(function(){
 			"frame.contentWindow.document.getElementById('train_no').value='"
 			+$("#oneway_train_no").val()
 			+"';";
-
-		var radioIndex=$(":radio[name='oneway_optradio']").index($(":radio[name='oneway_optradio']:checked"));
-		radioIndex = parseInt(radioIndex);
-		if(radioIndex == 0){
-			javascriptContent+=
-				"frame.contentWindow.document.getElementById('from_station').selectedIndex=53;"
-				+"frame.contentWindow.document.getElementById('to_station').selectedIndex=96;";
-		}else if(radioIndex == 1){
-			javascriptContent+=
-				"frame.contentWindow.document.getElementById('from_station').selectedIndex=96;"
-				+"frame.contentWindow.document.getElementById('to_station').selectedIndex=53;";	
-		}
 
 		if($("#oneway_check").prop("checked")){
 			javascriptContent+=
